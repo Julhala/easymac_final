@@ -1,0 +1,180 @@
+/* Reset de estilos */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+/* Corpo da página */
+body {
+    font-family: 'Arial', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* Altura total da página */
+    overflow: hidden;
+    background-color: #f9f9f9; /* Fundo mais suave */
+}
+
+/* Container principal */
+.container {
+    display: flex;
+    width: 100%;
+    height: 100%;
+}
+
+/* Lado esquerdo com frases motivacionais */
+.left-side {
+    background-color: #9e0000; /* Vermelho */
+    width: 100%; /* Definido como 50% para ocupar metade da tela */
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    color: white;
+}
+
+/* Container das frases motivacionais */
+.motivational-quotes-container {
+    text-align: center;
+}
+
+/* Estilo das frases motivacionais */
+.motivational-quote {
+    font-size: 24px;
+    font-style: italic;
+    line-height: 1.5;
+    margin: 0;
+    color: white;
+}
+
+/* Estilo do formulário (lado direito) */
+.form-container {
+    background-color: white;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.1);
+    width: 50%;
+    text-align: center;
+    margin-left: auto; /* Coloca a caixa do lado direito */
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease;
+    opacity: 0;
+    animation: fadeIn 1s forwards; /* Animação de fade in */
+}
+
+/* Título do formulário */
+.form-container h2 {
+    margin-bottom: 25%;
+    font-size: 200%;
+    color: #9e0000; /* Vermelho */
+}
+
+/* Labels */
+label {
+    font-size: 16px;
+    color: #333;
+    margin-bottom: 8px;
+    display: block;
+}
+
+/* Campos de input */
+input[type="text"],
+input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    color: #333;
+    transition: all 0.3s ease-in-out; /* Animação para foco */
+}
+
+input[type="text"]:focus,
+input[type="password"]:focus {
+    border-color: #9e0000; /* Cor de borda vermelha quando em foco */
+    outline: none;
+    box-shadow: 0 0 5px rgba(158, 0, 0, 0.5); /* Adiciona uma sombra de foco */
+}
+
+/* Botão de submit */
+button[type="submit"] {
+    width: 100%;
+    padding: 12px;
+    background-color: #9e0000; /* Vermelho */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 18px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s ease;
+}
+
+button[type="submit"]:hover {
+    background-color: #7a0000; /* Cor mais escura de vermelho ao passar o mouse */
+    transform: scale(1.05); /* Efeito de crescimento suave */
+}
+
+/* Mensagem de erro */
+.error-message {
+    color: red;
+    font-size: 14px;
+    margin-top: 10px;
+}
+.gear{
+    animation: roda 5s infinite none;
+}
+@keyframes roda {
+    0%{
+        transform: rotate(0deg);
+    }
+    100%{
+        transform: rotate(360deg);
+    }
+}
+/* Animação do fade-in para o formulário */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .container {
+        flex-direction: column;
+    }
+
+    .left-side {
+        width: 100%;
+        height: 40%;
+    }
+
+    .form-container {
+        width: 80%;
+        margin-top: 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    .form-container h2 {
+        font-size: 22px;
+    }
+
+    input[type="text"],
+    input[type="password"] {
+        padding: 10px;
+    }
+
+    button[type="submit"] {
+        font-size: 16px;
+        padding: 12px;
+    }
+}

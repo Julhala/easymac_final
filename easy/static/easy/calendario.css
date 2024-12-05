@@ -1,0 +1,139 @@
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 20px;
+    background-color: #f0f4f8;
+}
+
+#main-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 20px; /* Espaçamento entre o calendário e a tabela */
+}
+
+#calendar-container {
+    flex: 1;
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    overflow: hidden; /* Para bordas arredondadas */
+}
+
+#calendar {
+    padding: 20px;
+}
+
+#calendar-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#calendar-header button {
+    background-color: #ff0000; /* Cor do botão */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s; /* Transição suave */
+}
+
+#calendar-header button:hover {
+    background-color: #b30000; /* Cor ao passar o mouse */
+}
+
+#month-year {
+    font-size: 1.8em;
+    font-weight: bold;
+}
+
+#weekdays {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+}
+
+#weekdays span {
+    flex: 1;
+    text-align: center;
+    font-weight: bold;
+    color: #6c757d; /* Cor dos dias da semana */
+}
+
+#days {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 10px; /* Espaçamento entre os dias */
+    margin-top: 10px;
+}
+
+#days div {
+    height: 80px; /* Altura dos dias */
+    background-color: #e9ecef; /* Cor de fundo dos dias */
+    border-radius: 8px; /* Borda arredondada */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.3s; /* Transição suave ao passar o mouse */
+}
+
+#days div:hover {
+    background-color: #ff0000; /* Cor ao passar o mouse sobre os dias */
+    color: white; /* Mudança de cor do texto ao passar o mouse */
+}
+
+#agenda-table {
+    flex-basis: 40%; /* Tabela ocupa uma parte fixa do espaço */
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+#agenda-table h3 {
+    padding: 20px; /* Espaçamento na parte superior da tabela */
+}
+
+#agenda-table-content {
+    width: 100%;
+    border-collapse: collapse; /* Remove espaçamento entre células */
+}
+
+#agenda-table-content th,
+#agenda-table-content td {
+    padding: 15px; /* Espaçamento interno das células */
+    text-align: left; /* Alinhamento do texto */
+}
+
+#agenda-table-content th {
+    background-color: #ff0000; /* Cor de fundo do cabeçalho */
+    color: white; /* Cor do texto do cabeçalho */
+}
+
+#agenda-table-content tr:nth-child(even) {
+    background-color: #f2f2f2; /* Cor de fundo das linhas pares */
+}
+
+#agenda-table-content tr:hover {
+   background-color:#d1ecf1; /* Cor ao passar o mouse sobre a linha da tabela */
+   transition:.3s ease-in-out; /* Transição suave ao passar o mouse */
+}
+
+
+
+.day-agendado {
+    background-color: #d3d3d3; /* Cor cinza claro */
+    color: #000; /* Cor do texto */
+    cursor: pointer; /* Muda o cursor para indicar que é interativo */
+}
+
+.day-agendado:hover {
+    background-color: #a9a9a9; /* Cor cinza escuro ao passar o mouse */
+}
+
+/* Para dias agendados na tabela */
+.day-agendado-tabela {
+    background-color: #b0b0b0; /* Cor cinza mais escuro para a tabela */
+}
+

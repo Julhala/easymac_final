@@ -1,0 +1,292 @@
+/* Estilos gerais */
+body {
+    display: flex;
+    flex-direction: row;
+    height: 100vh;
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+
+.dropdown {
+    position: relative;
+}
+
+.dropbtn {
+    background-color: transparent;
+    border: none;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #8B0000;
+    min-width: 160px;
+    z-index: 1;
+    right: 0;
+    top: 100%;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.dropdown-content a {
+    color: white;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+.dropdown-content a:hover {
+    background-color: #6c0000;
+}
+
+/* Layout */
+.container {
+    display: flex;
+    flex: 1;
+    height: 100vh;  /* Garante que a altura da tela será 100vh */
+}
+
+/* Painel esquerdo */
+.left-panel {
+    width: 30%;
+    background-color: #8B0000; /* Vermelho escuro */
+    color: #FFFFFF; /* Branco */
+    padding: 20px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    height: 100%;  /* Garantir que o painel esquerdo ocupe toda a altura */
+}
+
+/* Título do painel */
+.left-panel h3 {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    text-align: center;
+    border-bottom: 2px solid #FFFFFF;
+    padding-bottom: 10px;
+    margin-top: 90px; /* Adiciona margem superior */
+}
+
+/* Barra de pesquisa */
+.search {
+    margin-bottom: 20px;
+    width: 100%;
+}
+
+.search__input {
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+    border: none;
+    outline: none;
+    font-size: 16px;
+}
+
+.search__input::placeholder {
+    color: #AAAAAA; /* Cinza claro */
+}
+
+/* Lista de máquinas */
+.machines-list {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.team-member {
+    margin-bottom: 15px;
+    padding: 12px;
+    background-color: #D3D3D3; /* Cinza claro */
+    color: #000000; /* Preto */
+    border-radius: 5px;
+    text-align: left;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+    text-decoration: none;
+}
+
+.team-member:hover {
+    background-color: #C0C0C0; /* Cinza intermediário */
+}
+
+/* Painel direito */
+.right-panel {
+    width: 70%;
+    padding: 20px;
+    background-color: #F9F9F9; /* Branco muito claro */
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;  /* Alinha as informações ao topo */
+    overflow-y: auto;
+    height: 100%;  /* Garante que o painel direito ocupe toda a altura disponível */
+}
+
+/* Informações da máquina */
+.informacoes-maquinas {
+    display: none;
+    text-align: center;
+    background-color: #FFFFFF;
+    padding: 20px;
+    border: 1px solid #DDD;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    max-width: 100%;
+    height: auto;
+}
+
+.informacoes-maquinas.active {
+    margin-top: 20%;
+    display: block;
+}
+
+.informacoes-maquinas img {
+    width: auto;  /* Mantém a proporção da imagem */
+    max-height: 400px;  /* Define um limite de altura para a imagem */
+    margin-bottom: 10px;
+}
+
+.informacoes-maquinas div {
+    font-size: 16px;
+    color: #333333; /* Cinza escuro */
+    margin: 10px 0;
+}
+
+.search__input::placeholder {
+    color: #888;
+}
+
+/* Scroll personalizado */
+.left-panel::-webkit-scrollbar {
+    width: 8px;
+}
+
+.left-panel::-webkit-scrollbar-thumb {
+    background-color: #8B0000;
+    border-radius: 4px;
+}
+
+.left-panel::-webkit-scrollbar-track {
+    background-color: #f4f4f4;
+}
+
+/* Barra de pesquisa */
+.search {
+    margin-bottom: 20px;
+}
+
+.search__input {
+    width: calc(100% - 20px);
+    padding: 10px;
+    border-radius: 5px;
+    border: none;
+    outline: none;
+    font-size: 16px;
+}
+
+.search__input::placeholder {
+    color: #AAAAAA; /* Cinza claro */
+}
+
+.search__button {
+    padding: 10px;
+    border: none;
+    background-color: #FFFFFF;
+    color: #8B0000;
+    font-weight: bold;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+/* Lista de máquinas */
+.team-member {
+    margin-bottom: 15px;
+    padding: 15px;
+    background-color: #D3D3D3; /* Cinza claro */
+    color: #000000; /* Preto */
+    border-radius: 5px;
+    text-align: center;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.team-member:hover {
+    background-color: #C0C0C0; /* Cinza intermediário */
+}
+
+/* Painel direito */
+.right-panel {
+    width: 70%;
+    padding: 20px;
+    background-color: #F9F9F9; /* Branco muito claro */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.details {
+    display: none;
+    text-align: center;
+    background-color: #FFFFFF; /* Branco */
+    padding: 20px;
+    border: 1px solid #DDD; /* Cinza claro */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.details img {
+    max-width: 100%;
+    margin-bottom: 10px;
+}
+
+.details p {
+    font-size: 16px;
+    color: #333333; /* Cinza escuro */
+    margin: 5px 0;
+}
+
+/* Scroll personalizado */
+.left-panel::-webkit-scrollbar {
+    width: 10px;
+}
+
+.left-panel::-webkit-scrollbar-thumb {
+    background-color: rgba(111, 111, 111, 0.46); /* Vermelho escuro */
+    border-radius: 5px;
+}
+
+.left-panel::-webkit-scrollbar-track {
+    background-color: #D3D3D3; /* Cinza claro */
+}
+
+.status-button {
+    margin-left: 10px;
+    padding: 8px 10px;
+    background-color: green; /* Cor inicial (Ativo) */
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.status-button:hover {
+    opacity: 0.8;
+}
+
+.status-button:active {
+    opacity: 1;
+}
+
+/* Ajustes para telas pequenas */
+@media (max-width: 768px) {
+    .left-panel, .right-panel {
+        width: 100%;  /* Em telas pequenas, ambos os painéis ocupam 100% da largura */
+        height: auto; /* Altura automática para ajustar ao conteúdo */
+    }
+}

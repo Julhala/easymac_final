@@ -1,0 +1,264 @@
+/* Reset de Estilos */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial;
+}
+
+/* Corpo da Página */
+body {
+    background-color: #f7f9fb;
+    color: #4a4a4a;
+    font-size: 16px;
+    line-height: 1.6;
+}
+
+
+/* Carrossel */
+.carousel {
+    position: relative;
+    width: 100%;
+    margin-top: 8%;
+    overflow: hidden;
+    border-radius: 10px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+.carousel-images {
+    display: flex;
+    transition: transform 0.6s ease-in-out;
+}
+
+.carousel-images img {
+    width: 100%;
+    display: block;
+    border-radius: 10px;
+    object-fit: cover;
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
+}
+
+.carousel-images img.active {
+    opacity: 1;
+}
+
+.carousel-nav {
+    position: absolute;
+    top: 50%;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    transform: translateY(-50%);
+    z-index: 2;
+}
+
+.carousel-nav button {
+    background-color: rgba(255, 255, 255, 0.5);
+    border: none;
+    padding: 15px;
+    cursor: pointer;
+    font-size: 2rem;
+    border-radius: 50%;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.carousel-nav button:hover {
+    background-color: rgba(255, 255, 255, 0.8);
+    transform: scale(1.1);
+}
+
+.carousel-nav button:focus {
+    outline: none;
+}
+
+.carousel-indicators {
+    display: flex;
+    justify-content: center;
+    margin-top: 15px;
+}
+
+.carousel-indicators .indicator {
+    background-color: rgba(0, 0, 0, 0.4);
+    border-radius: 50%;
+    width: 12px;
+    height: 12px;
+    margin: 0 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.carousel-indicators .indicator.active {
+    background-color: #db3434;
+    transform: scale(1.2);
+}
+
+.carousel-indicators .indicator:hover {
+    background-color: #b92929;
+}
+
+/* Conteúdo Principal */
+.main-content {
+    padding: 40px;
+    max-width: 1100px;
+    margin: 40px auto;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+h2 {
+    font-size: 36px;
+    font-weight: 600;
+    color: #2c3e50;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+h3 {
+    font-size: 26px;
+    color: #2c3e50;
+    margin-top: 40px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    border-bottom: 2px solid #3498db;
+    padding-bottom: 5px;
+}
+
+h4 {
+    font-size: 22px;
+    color: #34495e;
+    margin-top: 25px;
+}
+
+p {
+    font-size: 18px;
+    color: #555;
+    line-height: 1.7;
+    margin-bottom: 20px;
+    text-align: justify;
+}
+
+ul {
+    list-style: none;
+    padding-left: 0;
+    margin-top: 20px;
+}
+
+ul li {
+    font-size: 18px;
+    margin: 15px 0;
+    line-height: 1.6;
+}
+
+ul li strong {
+    color: #3498db;
+    font-weight: 600;
+}
+
+/* Estilo de Links */
+a {
+    color: #3498db;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+a:hover {
+    color: #2980b9;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .main-content {
+        padding: 20px;
+    }
+
+    h2 {
+        font-size: 28px;
+    }
+
+    h3 {
+        font-size: 22px;
+    }
+
+    h4 {
+        font-size: 18px;
+    }
+
+    p {
+        font-size: 16px;
+    }
+
+    ul li {
+        font-size: 16px;
+    }
+}
+
+@media (max-width: 480px) {
+    header {
+        font-size: 28px;
+    }
+
+    .carousel-images img {
+        border-radius: 5px;
+    }
+
+    .carousel-nav button {
+        padding: 10px;
+        font-size: 1.5rem;
+    }
+
+    .carousel-indicators .indicator {
+        width: 10px;
+        height: 10px;
+    }
+}
+
+/* Estilo inicial do botão */
+#backToTopBtn {
+    position: fixed;
+    bottom: 20px;  /* Distância do fundo da página */
+    right: 20px;   /* Distância da borda direita */
+    background: linear-gradient(135deg, #ff4e50, #ff0000); /* Gradiente de fundo */
+    color: white;  /* Cor do ícone */
+    border: none;  /* Remover borda */
+    border-radius: 10%; /* Botão redondo */
+    padding: 12px;  /* Tamanho menor do botão */
+    font-size: 20px; /* Tamanho do ícone menor */
+    cursor: pointer; /* Cursor de mão */
+    display: none; /* Inicialmente oculto */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Sombra suave */
+    transition: all 0.3s ease-in-out; /* Transição suave */
+    z-index: 1000; /* Garante que o botão fique sobre os outros elementos */
+    animation: pulseAnimation 2s infinite; /* Animação de pulsação */
+}
+
+/* Animação de pulsação */
+@keyframes pulseAnimation {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.2); /* Expande o botão no meio da animação */
+    }
+    100% {
+        transform: scale(1); /* Retorna ao tamanho original */
+    }
+}
+
+/* Efeito de hover - Botão se expande um pouco e muda a sombra */
+#backToTopBtn:hover {
+    transform: translateY(-5px);  /* Levanta o botão ao passar o mouse */
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3); /* Aumenta a sombra */
+}
+
+/* Efeito de foco */
+#backToTopBtn:focus {
+    outline: none;  /* Remove o contorno ao clicar */
+}
+
+/* Efeito quando o botão estiver visível */
+#backToTopBtn.show {
+    display: block;
+    animation: none; /* Remove a animação de pulsação quando o botão aparece */
+}

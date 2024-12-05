@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calendário de Manutenção</title>
+    <link rel="stylesheet" href="{% static 'easy/header.css' %}">
+    <link rel="stylesheet" href="{% static 'easy/calendario.css' %}">
+    <link rel="stylesheet" href="{% static 'easy/footer.css' %}">
+</head>
+<body>
+    <header class="header">
+        <a href="{% url 'menu' %}">
+            <div class="logo">
+                <img src="{% static 'image/logo.png' %}" alt="Logo" class="logo-img">
+            </div>
+        </a>
+        <nav class="nav">
+            <ul>
+                <li><a href="{% url 'agenda' %}">Agenda</a></li>
+                <li><a href="{% url 'galeria_doc' %}">Manual de Máquinas</a></li>
+            </ul>
+        </nav>
+        <div class="dropdown">
+            <button class="dropbtn">Bem-vindo, Usuário</button>
+            <div class="dropdown-content">
+                <a href="{% url 'capa' %}">logout</a>
+            </div>
+        </div>
+    </header>
+
+   <main id="main-content">
+    <section id="calendar-container">
+        <div id="calendar">
+            <div id="calendar-header">
+                <button onclick="prevMonth()">&#8249;</button>
+                <h2 id="month-year"></h2>
+                <button onclick="nextMonth()">&#8250;</button>
+            </div>
+            <div id="weekdays">
+                <span>Dom</span><span>Seg</span><span>Ter</span><span>Qua</span>
+                <span>Qui</span><span>Sex</span><span>Sáb</span>
+            </div>
+            <div id="days"></div>
+        </div>
+    </section>
+
+    <section id="agenda-table">
+        <h3>Agendamentos</h3>
+        <table id="agenda-table-content">
+            <thead>
+                <tr>
+                    <th>Data</th>
+                    <th>Evento</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- A tabela será preenchida dinamicamente com os agendamentos -->
+            </tbody>
+        </table>
+    </section>
+</main>
+
+    <script>
+    const monthYear = document.getElementById("month-year");
+    const daysContainer = document.getElementById("days");
+    const agendaTableContent = document.getElementById("agenda-table-content").getElementsByTagName("tbody")[0];
+
+    let currentMonth = new Date().getMonth();
+    let currentYear = new Date().getFullYear();
+    let allAgendamentos = [];
+
+    // Função para buscar os agendamentos do servidor
+    async function fetchAgendamento(month, year) {
+        try {
+            const response = await fetch(`/obter_eventos/?month=${month + 1}&year=${year}`);
+            const agendamentos = await response.json();
+            allAgendamentos = agendamentos; // Salva todos os eventos
+            renderCalendar(month, year, agendamentos);
+            renderAgendaTable(agendamentos);
+        } catch (error) {
+            console.error("Erro ao buscar agendamento:", error);
+        }
+    }
+
+    // Função para renderizar o calendário
+    function renderCalendar(month, year, agendamentos = []) {
+        monthYear.innerText = new Date(year, month).toLocaleString('pt-br', { month: 'long', year: 'numeric' });
+        daysContainer.innerHTML = '';
+
+        const firstDayOfMonth = new Date(year, month, 1).getDay();
+        const lastDateOfMonth = new Date(year, month + 1, 0).getDate();
+
+        // Preencher os dias do calendário
+        for (let i = 0; i < firstDayOfMonth; i++) {
+            daysContainer.innerHTML += `<div></div>`;
+        }
+
+        // Criar os dias sem mostrar os agendamentos
+        for (let day = 1; day <= lastDateOfMonth; day++) {
+            const agendamentosDoDia = agendamentos.filter(ag => {
+                const dataAgendada = new Date(ag.dia);
+                return (
+                    dataAgendada.getUTCFullYear() === year &&
+                    dataAgendada.getUTCMonth() === month &&
+                    dataAgendada.getUTCDate() === day
+                );
+            });
+
+            // Adiciona uma classe se houver agendamentos para o dia
+            const dayClass = agendamentosDoDia.length > 0 ? 'day-agendado' : '';
+            daysContainer.innerHTML += `<div class="${dayClass}" data-day="${day}">${day}</div>`;
+        }
+    }
+
+    // Função para renderizar a tabela de agendamentos
+    function renderAgendaTable(agendamentos) {
+        agendaTableContent.innerHTML = ''; // Limpar tabela antes de preencher
+
+        agendamentos.forEach(agendamento => {
+            const date = new Date(agendamento.dia);
+            const day = date.getUTCDate();
+            const month = date.getUTCMonth() + 1; // Mês começa em 0
+            const year = date.getUTCFullYear();
+
+            const row = document.createElement("tr");
+            row.innerHTML = `<td>${day}/${month}/${year}</td><td>${agendamento.nome} (${agendamento.tipomanu})</td>`;
+            agendaTableContent.appendChild(row);
+        });
+    }
+
+    // Função para navegar para o mês anterior
+    function prevMonth() {
+        currentMonth = (currentMonth - 1 + 12) % 12;
+        if (currentMonth === 11) currentYear--;
+        fetchAgendamento(currentMonth, currentYear);
+    }
+
+    // Função para navegar para o próximo mês
+    function nextMonth() {
+        currentMonth = (currentMonth + 1) % 12;
+        if (currentMonth === 0) currentYear++;
+        fetchAgendamento(currentMonth, currentYear);
+    }
+
+    // Carregar o calendário ao inicializar
+    fetchAgendamento(currentMonth, currentYear);
+    
+    const dayClass = agendamentosDoDia.length > 0 ? 'day-agendado' : '';
+        daysContainer.innerHTML += `<div class="${dayClass}" data-day="${day}">${day}</div>`;
+        
+</script>
+
+</body>
+</html>

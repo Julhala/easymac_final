@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Página de Login</title>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'easy/login.css' %}">
+</head>
+<body>
+    <div class="container">
+        <!-- Lado esquerdo com frases motivacionais -->
+        <div class="left-side">
+            <div class="motivational-quotes-container">
+                <!-- Exibição das frases motivacionais -->
+                <p id="motivational-quote" class="motivational-quote"></p>
+            </div>
+        </div>
+
+        <!-- Formulário de Login -->
+        <div class="form-container">
+            <form method="post">
+                {% csrf_token %}
+                <h2>Entrar</h2>
+                <label for="username">Usuário:</label>
+                <input type="text" name="nome" id="username" required>  <!-- 'nome' está correto -->
+                <br>
+                <label for="password">Senha:</label>
+                <input type="password" name="senha" id="password" required>
+                <br>
+                <button type="submit">Entrar</button>
+            </form>
+            {% for message in messages %}
+                <p class="error-message">{{ message }}</p>
+            {% endfor %}
+        </div>
+    </div>
+
+    <script>
+        // Frases motivacionais relacionadas a manutenção de máquinas
+        const quotes = [
+            "Manter o equipamento funcionando é garantir que o trabalho nunca pare.",
+            "Cada reparo é uma chance de melhorar o desempenho da máquina.",
+            "Na manutenção, a precisão e o cuidado são tão importantes quanto a força.",
+            "Quando as máquinas param, a solução começa com a manutenção.",
+            "Cada defeito resolvido é uma máquina mais eficiente para o futuro.",
+            "Manutenção é o que garante a longevidade das suas ferramentas de trabalho.",
+            "Um bom técnico não só conserta máquinas, mas mantém a confiança em cada serviço.",
+            "O segredo da eficiência está em prevenir, não apenas corrigir.",
+            "A máquina pode descansar, mas sua manutenção nunca para.",
+            "Manutenção é como saúde para a máquina, cuidando dela hoje para garantir o amanhã.",
+            "Não é sobre consertar, mas sobre evitar o problema antes que ele aconteça.",
+            "A manutenção não é uma tarefa, é uma missão de garantir o futuro da operação.",
+            "O sucesso de uma máquina começa na qualidade da sua manutenção.",
+            "Toda máquina tem um ciclo, e a manutenção é o que o mantém funcionando.",
+            "A manutenção é a chave para o desempenho excepcional de qualquer equipamento."
+        ];
+
+        // Exibe uma frase aleatória
+        document.getElementById('motivational-quote').innerHTML = quotes[Math.floor(Math.random() * quotes.length)];
+    </script>
+</body>
+</html>

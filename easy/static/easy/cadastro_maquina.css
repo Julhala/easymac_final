@@ -1,0 +1,44 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f9f9f9; /* Cor de fundo suave */
+    margin: 0;
+    padding: 20px;
+}
+
+h2 {
+    text-align: center;
+    color: #b22222; /* Cor do título em vermelho escuro */
+}
+
+form {
+    background-color: #fff; /* Fundo branco para o formulário */
+    border-radius: 10px; /* Bordas arredondadas */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); /* Sombra mais pronunciada */
+    padding: 30px; /* Espaçamento interno */
+    max-width: 600px; /* Largura máxima do formulário */
+    margin: auto; /* Centraliza o formulário */
+}
+
+label {
+    display: block; /* Faz com que os rótulos ocupem toda a largura disponível */
+    margin-bottom: 5px; /* Espaçamento abaixo dos rótulos */
+    font-weight: bold; /* Destaca os rótulos */
+    color: #b22222; /* Cor dos rótulos em vermelho escuro */
+}
+
+input[type="text"],
+textarea,
+input[type="file"] {
+    width: 100%; /* Largura total dos campos */
+    padding: 12px; /* Espaçamento interno nos campos */
+    margin-bottom: 20px; /* Espaçamento abaixo dos campos */
+    border-radius: 5px; /* Bordas arredondadas nos campos */
+    border: 1px solid #ccc; /* Borda cinza clara */
+    transition: border-color 0.3s, box-shadow 0.3s; /* Transição suave para a borda e sombra */
+}
+
+input[type="text"]:focus,
+textarea:focus {
+    border-color: #b22222; /* Cor da borda ao focar no campo */
+    box-shadow: 0 0 5px rgba(178, 34, 34, 0.5); /* Sombra ao focar no campo */
+}

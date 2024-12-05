@@ -1,0 +1,218 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f9f9f9;
+}
+
+h2 {
+    color: #333;
+    font-size: 24px;
+    text-align: center;
+    margin-top: 10px; /* Reduzido a margem superior */
+    margin-bottom: 20px;
+}
+
+.search-container {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.search-container input[type="text"] {
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: 300px;
+    margin-top: 3%;
+}
+
+.search-container button {
+    padding: 10px 20px;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    background-color: #dc3545; /* Cor de fundo vermelha */
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.search-container button:hover {
+    background-color: #c82333; /* Cor de fundo vermelha mais escura */
+}
+
+.table-container {
+    max-width: 1000px;
+    margin: 0 auto;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+}
+
+.custom-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.custom-table thead {
+    background-color: #dc3545; /* Cabeçalho com fundo vermelho */
+    color: white;
+}
+
+.custom-table th,
+.custom-table td {
+    padding: 12px 15px;
+    text-align: center;
+    border-bottom: 1px solid #ddd;
+}
+
+.custom-table tbody tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+.custom-table tbody tr:hover {
+    background-color: #f1f1f1;
+}
+
+.action-btn {
+    padding: 8px 12px;
+    border: none;
+    border-radius: 5px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.edit-btn {
+    background-color: #82e83e; /* Botão editar com tom de rosa avermelhado */
+    color: white;
+}
+
+.edit-btn:hover {
+    background-color: #51d633; /* Tom mais escuro de rosa avermelhado */
+}
+
+.delete-btn {
+    background-color: #dc3545; /* Botão excluir com vermelho */
+    color: white;
+}
+
+.delete-btn:hover {
+    background-color: #c82333; /* Tom mais escuro de vermelho */
+}
+
+.pagination-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 20px auto;
+    max-width: 1000px;
+}
+
+.pagination-buttons {
+    display: flex;
+    gap: 10px;
+}
+
+.pagination-btn {
+    padding: 8px 12px;
+    font-size: 14px;
+    text-decoration: none;
+    color: white;
+    background-color: #dc3545; /* Cor de fundo vermelha */
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.pagination-btn:hover {
+    background-color: #c82333; /* Cor de fundo vermelha mais escura */
+}
+
+.page-info {
+    font-size: 16px;
+    color: #555;
+}
+
+/* Modal Styling */
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content {
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    width: 400px;
+    text-align: center;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.modal-content h2 {
+    margin-top: 0;
+    color: #333;
+}
+
+.modal-content label {
+    font-weight: bold;
+    display: block;
+    margin: 10px 0 5px;
+}
+
+.modal-content input[type="text"] {
+    width: calc(100% - 20px);
+    padding: 8px 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.modal-content button {
+    margin: 10px 5px 0;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.modal-content button[type="submit"] {
+    background-color: #e83e8c; /* Botão salvar com tom de rosa avermelhado */
+    color: white;
+}
+
+.modal-content button[type="submit"]:hover {
+    background-color: #d6336c;
+}
+
+.modal-content button[type="button"] {
+    background-color: #dc3545; /* Botão cancelar com vermelho */
+    color: white;
+}
+
+.modal-content button[type="button"]:hover {
+    background-color: #c82333;
+}
+
+.close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 20px;
+    cursor: pointer;
+    color: #333;
+}
+
+.close:hover {
+    color: #000;
+}

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editar Funcionário</title>
+    <link rel="stylesheet" href="{% static 'easy/tabelas.css' %}">
+</head>
+<body>
+    <div style="background-color: #8B0000; height: 80px; position: relative;">
+        <a href="{% url 'tabela_funcionario' %}" style="position: absolute; top: 20px; left: 20px; color: white; font-size: 24px; text-decoration: none;">
+            ← Voltar à Tabela de Funcionários
+        </a>
+    </div>
+
+    <h2>Editar Funcionário: {{ funcionario.nome }} {{ funcionario.sobrenome }}</h2>
+
+    <form method="POST">
+        {% csrf_token %}
+        
+        <!-- Campos do formulário -->
+        <label for="nome">Nome:</label>
+        <input type="text" id="nome" name="nome" value="{{ funcionario.nome }}" required><br><br>
+
+        <label for="sobrenome">Sobrenome:</label>
+        <input type="text" id="sobrenome" name="sobrenome" value="{{ funcionario.sobrenome }}" required><br><br>
+
+        <label for="cpf">CPF:</label>
+        <input type="text" id="cpf" name="cpf" value="{{ funcionario.cpf }}" required><br><br>
+
+        <label for="telefone">Telefone:</label>
+        <input type="text" id="telefone" name="telefone" value="{{ funcionario.telefone }}" required><br><br>
+
+        <button type="submit">Salvar Alterações</button>
+    </form>
+
+    <hr>
+    
+    {% if messages %}
+    <div>
+        {% for message in messages %}
+            <p>{{ message }}</p>
+        {% endfor %}
+    </div>
+    {% endif %}
+</body>
+</html>

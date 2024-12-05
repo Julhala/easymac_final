@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editar Máquina</title>
+    <link rel="stylesheet" href="{% static 'easy/tabelas.css' %}">
+</head>
+<body>
+    <div style="background-color: #8B0000; height: 80px; position: relative;">
+        <a href="{% url 'tabela_maquina' %}" style="position: absolute; top: 20px; left: 20px; color: white; font-size: 24px; text-decoration: none;">
+            ← Voltar à Tabela de Máquinas
+        </a>
+    </div>
+
+    <h2>Editar Máquina: {{ maquina.nome }}</h2>
+
+    <form action="" method="POST" id="editForm" enctype="multipart/form-data">
+        {% csrf_token %}
+        <input type="hidden" name="id" id="maquinaId">
+    
+        <!-- Campos do formulário -->
+        <label for="nome">Nome:</label>
+        <input type="text" id="nome" name="nome" required><br><br>
+    
+        <label for="tipomaq">Tipo de Máquina:</label>
+        <input type="text" id="tipomaq" name="tipomaq" required><br><br>
+    
+        <label for="tipomanu">Tipo de Manutenção:</label>
+        <input type="text" id="tipomanu" name="tipomanu" required><br><br>
+    
+        <label for="descricao">Descrição:</label>
+        <textarea id="descricao" name="descricao" required></textarea><br><br>
+    
+        <label for="imagem">Imagem (se desejar mudar):</label>
+        <input type="file" id="imagem" name="imagem"><br><br>
+    
+        <button type="submit">Salvar Alterações</button>
+        <button type="button" onclick="closeModal()">Cancelar</button>
+    </form>
+
+    <hr>
+
+    {% if messages %}
+    <div>
+        {% for message in messages %}
+            <p>{{ message }}</p>
+        {% endfor %}
+    </div>
+    {% endif %}
+</body>
+</html>

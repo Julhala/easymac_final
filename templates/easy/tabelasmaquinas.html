@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Máquinas</title>
+    <link rel="stylesheet" href="{% static 'easy/header.css' %}">
+    <link rel="stylesheet" href="{% static 'easy/tabelas.css' %}">
+</head>
+<body>
+    <header class="header">
+        <a href="{% url 'menuadmin' %}">
+            <div class="logo">
+                <img src="{% static 'image/logo.png' %}" alt="Logo" class="logo-img">
+            </div>
+        </a>
+        <nav class="nav">
+            <ul>
+                <li><a href="{% url 'cadastrar_usuario' %}">Cadastro de Docente</a></li>
+                <li><a href="{% url 'cadastrar_maquina' %}">Cadastro de Ativos</a></li>
+                <li><a href="{% url 'tabela_funcionario' %}">Tabela de Docente</a></li>
+            </ul>
+        </nav>
+        <div class="dropdown">
+            <button class="dropbtn">Bem-vindo, Usuário</button>
+            <div class="dropdown-content">
+                <a href="{% url 'capa' %}">logout</a>
+            </div>
+        </div>
+    </header>
+
+    <h2 style="text-align: center; margin-top: 20px;">Lista de Máquinas</h2>
+
+    <!-- Formulário de Pesquisa -->
+    <div class="search-container" style="text-align: center; margin-bottom: 20px;">
+        <form method="GET" action="">
+            <input type="text" name="search" placeholder="Pesquisar por nome..." value="{{ search }}" style="padding: 8px; font-size: 16px; border-radius: 5px; border: 1px solid #ccc; margin-right: 10px;">
+            <button type="submit" style="padding: 8px 15px; font-size: 16px; border-radius: 5px; border: 1px solid #ff0000; background-color: #ff0000; color: white; cursor: pointer;">
+                Buscar
+            </button>
+        </form>
+    </div>
+
+    <div class="pagination-container">
+        <div class="pagination-buttons">
+            {% if page_obj.has_previous %}
+                <a href="?page=1&search={{ search }}" class="pagination-btn first">« Primeira</a>
+                <a href="?page={{ page_obj.previous_page_number }}&search={{ search }}" class="pagination-btn previous">Anterior</a>
+            {% endif %}
+        
+            {% if page_obj.has_next %}
+                <a href="?page={{ page_obj.next_page_number }}&search={{ search }}" class="pagination-btn next">Próxima</a>
+                <a href="?page={{ page_obj.paginator.num_pages }}&search={{ search }}" class="pagination-btn last">Última »</a>
+            {% endif %}
+        </div>
+    
+        <!-- Texto 'Página X de Y' à direita -->
+        <span class="page-info">Página {{ page_obj.number }} de {{ page_obj.paginator.num_pages }}</span>
+    </div>
+
+    <!-- Container da Tabela -->
+    <div class="table-container">
+        <table class="custom-table">
+            <thead>
+                <tr>
+                    <th>Nome</th>
+                    <th>Tipo de Máquina</th>
+                    <th>Tipo de Manutenção</th>
+                    <th>Descrição</th>
+                    <th>Status</th>
+                    <th>Ações</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for maquina in page_obj %}
+                <tr>
+                    <td>{{ maquina.nome }}</td>
+                    <td>{{ maquina.tipomaq }}</td>
+                    <td>{{ maquina.tipomanu }}</td>
+                    <td>{{ maquina.descricao }}</td>
+                    <td>{{ maquina.status }}</td>
+                    <td>
+                        <button class="action-btn edit-btn" onclick="openModal({{ maquina.id }}, '{{ maquina.nome }}', '{{ maquina.tipomaq }}','{{ maquina.tipomanu }}', '{{ maquina.descricao }}')">Editar</button>
+                        <a href="{% url 'excluir_maquina' maquina.id %}">
+                            <button class="action-btn delete-btn">Excluir</button>
+                        </a>
+                    </td>
+                </tr>
+                {% empty %}
+                <tr>
+                    <td colspan="7" style="text-align: center;">Nenhuma máquina encontrada.</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Container de Paginação -->
+
+
+    <!-- Modal de Edição -->
+    <div id="editModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <h2>Editar Máquina</h2>
+            <form action="" method="POST" id="editForm">
+                {% csrf_token %}
+                <input type="hidden" name="id" id="maquinaId">
+                <label for="nome">Nome:</label>
+                <input type="text" id="nome" name="nome" required><br><br>
+
+                <label for="tipomaq">Tipo de Máquina:</label>
+                <input type="text" id="tipomaq" name="tipomaq" required><br><br>
+
+                <label for="tipomanu">Tipo de Manutenção:</label>
+                <input type="text" id="tipomanu" name="tipomanu" required><br><br>
+
+                <label for="descricao">Descrição:</label>
+                <input type="text" id="descricao" name="descricao" required><br><br>
+
+                <button type="submit">Salvar</button>
+                <button type="button" onclick="closeModal()">Cancelar</button>
+            </form>
+        </div>
+    </div>
+
+<script>
+    // Função para filtrar a tabela com base na pesquisa
+    function filterTable() {
+        const searchInput = document.querySelector('input[name="search"]');
+        const filter = searchInput.value.toLowerCase();
+        const table = document.querySelector('.custom-table');
+        const rows = table.getElementsByTagName('tr');
+
+        // Percorre todas as linhas da tabela (exceto o cabeçalho)
+        for (let i = 1; i < rows.length; i++) {
+            const cells = rows[i].getElementsByTagName('td');
+            let rowContainsSearchTerm = false;
+
+            // Verifica se alguma célula contém o termo de pesquisa
+            for (let j = 0; j < cells.length; j++) {
+                const cell = cells[j];
+                if (cell) {
+                    const textValue = cell.textContent || cell.innerText;
+                    if (textValue.toLowerCase().indexOf(filter) > -1) {
+                        rowContainsSearchTerm = true;
+                        break; // Se encontrar, não precisa continuar verificando outras células
+                    }
+                }
+            }
+
+            // Mostra ou esconde a linha com base na pesquisa
+            rows[i].style.display = rowContainsSearchTerm ? '' : 'none';
+        }
+    }
+
+    // Adiciona um evento ao campo de pesquisa para filtrar enquanto digita
+    document.querySelector('input[name="search"]').addEventListener('keyup', filterTable);
+</script>
+
+</body>
+</html>

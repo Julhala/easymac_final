@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Página Industrial</title>
+    <link rel="stylesheet" href="{% static 'easy/header.css' %}">
+    <link rel="stylesheet" href="{% static 'easy/menu.css' %}">
+    <link rel="stylesheet" href="{% static 'easy/footer.css' %}">
+</head>
+<body>
+<header class="header">
+        <a href="{% url 'capa' %}">
+            <div class="logo">
+                <img src="{% static 'image/logo.png' %}" alt="Logo" class="logo-img">
+           </div>
+        </a>
+        <nav class="nav">
+            <ul>
+                <li><a href="{% url 'cadastrar_maquina' %}">Cadastro de Ativos</a></li>
+                <li><a href="{% url 'cadastrar_usuario' %}">Cadastro de Docente</a></li>
+                <li><a href="{% url 'tabela_maquina' %}">Tabelas de Ativos</a></li>
+                <li><a href="{% url 'tabela_funcionario' %}">Tabelas de Docente</a></li>
+            </ul>
+        </nav>
+        <div class="dropdown">
+            <button class="dropbtn">Bem-vindo, Usuário</button>
+            <div class="dropdown-content">
+                <a href="{% url 'capa' %}">Logout</a>
+            </div>
+        </div>
+    </header>
+
+<div class="carousel">
+    <div class="carousel-images">
+        <img src="{% static 'image/1.png' %}" alt="Imagem 1" class="active">
+        <img src="{% static 'image/2.png' %}" alt="Imagem 2">
+        <img src="{% static 'image/3.png' %}" alt="Imagem 3">
+        <img src="{% static 'image/4.png' %}" alt="Imagem 4">
+    </div>
+
+    <!-- Navegação do Carrossel -->
+    <div class="carousel-nav">
+        <button class="prev">&#10094;</button>
+        <button class="next">&#10095;</button>
+    </div>
+
+    <!-- Indicadores -->
+    <div class="carousel-indicators">
+        <span class="indicator active"></span>
+        <span class="indicator"></span>
+        <span class="indicator"></span>
+        <span class="indicator"></span>
+    </div>
+</div>
+
+<!-- Conteúdo da Página -->
+ <main class="main-content">
+    <section class="maintenance-info">
+        <h2>Manutenção de Máquinas: Importância, Tipos e Exemplos</h2>
+        <p>A manutenção de máquinas é uma atividade essencial em diversas indústrias e setores, sendo crucial para garantir a eficiência, segurança e longevidade dos equipamentos. O objetivo principal da manutenção é assegurar que as máquinas e os sistemas operem de forma contínua, sem falhas inesperadas, o que poderia causar prejuízos financeiros, perda de produtividade ou até riscos à segurança dos trabalhadores. Além disso, a manutenção preventiva e corretiva ajuda a reduzir custos com reparos emergenciais e evita quebras inesperadas que podem paralisar toda a produção.</p>
+
+        <h3>A Importância da Manutenção de Máquinas</h3>
+        <p>Manter as máquinas em bom estado de funcionamento é fundamental para assegurar que a produção seja realizada sem interrupções. Equipamentos mal mantidos podem resultar em falhas mecânicas, quebras de peças, aumento do consumo de energia e, em casos mais graves, acidentes de trabalho. Além disso, uma boa gestão de manutenção contribui para a eficiência operacional, otimizando os custos de produção e prolongando a vida útil dos ativos.</p>
+
+        <p>Outro ponto importante é que a manutenção pode ajudar a atender a normas de segurança e regulamentações industriais, evitando multas e melhorando as condições de trabalho. Máquinas bem mantidas operam de forma mais silenciosa, com menos vibração e em temperaturas ideais, garantindo um ambiente mais seguro e confortável para os operadores.</p>
+
+        <h3>Tipos de Manutenção de Máquinas</h3>
+        <p>Existem diferentes tipos de manutenção, cada um com suas características e objetivos. Os principais tipos são:</p>
+
+        <h4>Manutenção Preventiva</h4>
+        <p>A manutenção preventiva é planejada e realizada antes que ocorra qualquer falha. Seu objetivo é evitar que as máquinas apresentem problemas, realizando intervenções regulares baseadas no tempo ou na utilização dos equipamentos. Isso pode incluir trocas de óleo, lubrificação, calibração de peças, entre outros. A manutenção preventiva ajuda a aumentar a confiabilidade dos equipamentos e a reduzir o risco de falhas inesperadas.</p>
+
+        <h4>Manutenção Corretiva</h4>
+        <p>A manutenção corretiva é realizada após uma falha ou defeito. Nesse caso, o objetivo é reparar ou substituir peças danificadas para restaurar a máquina ao seu funcionamento normal. Embora seja inevitável em algumas situações, a manutenção corretiva geralmente envolve custos mais altos e tempos de inatividade maiores, impactando diretamente na produtividade da empresa.</p>
+
+        <h4>Manutenção Preditiva</h4>
+        <p>A manutenção preditiva utiliza tecnologia e sensores para monitorar o desempenho da máquina em tempo real e prever possíveis falhas antes que aconteçam. Através de técnicas como análise de vibração, termografia e monitoramento de temperatura, é possível identificar sinais de desgaste e realizar manutenções apenas quando necessário, evitando tanto falhas quanto manutenções desnecessárias.</p>
+
+        <h4>Manutenção Detectiva</h4>
+        <p>A manutenção detectiva ocorre quando há uma análise detalhada para descobrir falhas ou defeitos já existentes na máquina. Ela é realizada através de inspeções minuciosas, testes e verificações, com o objetivo de identificar e corrigir problemas que possam não ser visíveis à simples observação.</p>
+
+        <h3>Máquinas Específicas que Precisam de Manutenção Regular</h3>
+        <p>Algumas máquinas exigem manutenções específicas, devido à sua complexidade, intensidade de uso ou importância para o processo produtivo. Aqui estão alguns exemplos mais detalhados de máquinas que necessitam de manutenção constante:</p>
+
+        <ul>
+            <li><strong>Tornos CNC (Controle Numérico Computadorizado):</strong> Usados na fabricação de peças metálicas e de precisão, os tornos CNC requerem manutenção regular nos motores, eixos e sistemas de lubrificação. A falta de manutenção pode resultar em falhas na produção, perda de precisão e danos aos materiais.</li>
+            <li><strong>Prensas Hidráulicas:</strong> Comuns em fábricas de metalurgia e de plásticos, as prensas hidráulicas exigem manutenção constante no sistema hidráulico, no alinhamento das partes móveis e na troca de selos e vedações. Uma falha nas prensas pode paralisar a produção e comprometer a segurança dos operadores.</li>
+            <li><strong>Moinhos Industriais:</strong> Usados para a moagem de grãos, metais ou plásticos, os moinhos precisam de manutenção nos seus sistemas de rotação e moagem, além de monitoramento constante para evitar sobrecarga no motor. Sem manutenção adequada, esses equipamentos podem sofrer danos nas lâminas e nos rolamentos.</li>
+            <li><strong>Forno de Indução:</strong> Comumente utilizado em processos de fusão de metais, o forno de indução requer inspeções frequentes para garantir que o sistema de resfriamento esteja funcionando corretamente e para monitorar a temperatura de operação. Falhas podem resultar em danos aos metais fundidos ou em incêndios devido ao superaquecimento.</li>
+            <li><strong>Elevadores de Carga:</strong> Em indústrias e armazéns, os elevadores de carga são cruciais para o transporte de materiais pesados entre andares. A manutenção deve focar em seu sistema de cabos e polias, além de inspeções regulares nos freios e motores, para garantir a segurança no transporte de cargas.</li>
+            <li><strong>Compressores Industriais:</strong> Usados em diversos processos industriais, desde a alimentação de ferramentas pneumáticas até o controle de sistemas de climatização, os compressores necessitam de manutenção regular nos sistemas de filtragem, motores e tubulações. Sem essa manutenção, o equipamento pode falhar, prejudicando toda a produção e aumentando o consumo de energia.</li>
+            <li><strong>Máquinas de Injeção Plástica:</strong> Essenciais em indústrias de plásticos, essas máquinas exigem cuidados com o sistema de aquecimento, os moldes e os sistemas hidráulicos. Qualquer falha pode resultar em defeitos no produto final e paradas na produção, que podem ser caras.</li>
+            <li><strong>Máquinas de Papel e Celulose:</strong> Máquinas como as máquinas de papel necessitam de manutenção no sistema de secagem e nas rolos de pressão. O desgaste nessas partes pode comprometer a qualidade do papel produzido e levar à paralisação de todo o processo.</li>
+        </ul>
+    </section>
+</main>
+<footer class="custom-footer">
+    <div class="footer-container">
+        <div class="contact-info">
+            <h3>Entre em Contato</h3>
+            <p>Email: <a class="link" href="mailto:admin.office@easymac.com">admin.office@easymac.com</a></p>
+            <p>Telefone/WhatsApp: <a class="link" href="tel:+551140023456">+55 (11) 4002-3456</a></p>
+            <div class="address">
+                <span>Edifício Sede</span> |
+                <span>Av. Inovação e Tecnologia, 123</span> |
+                <span>Bloco A, Sala 456</span>
+                </div>
+            <p>Bairro da Inovação, São Paulo - SP, 01234-567, Brasil</p>
+        </div>
+        <div class="footer-links">
+            <h3>Links Rápidos</h3>
+            <ul>
+                <li><a href="#">Contato</a></li>
+                <li><a href="#">Política de Privacidade</a></li>
+                <li><a href="#">Termos de Uso</a></li>
+            </ul>
+        </div>
+        <div class="social-media">
+            <h3>Redes Sociais</h3>
+            <a href="#" class="imagemsocial"><img src="{% static 'image/facebook.png' %}" alt="Facebook"></a>
+            <a href="#" class="imagemsocial"><img src="{% static 'image/linkedin.png' %}" alt="LinkedIn"></a>
+            <a href="#" class="imagemsocial"><img src="{% static 'image/instagram.png' %}" alt="Instagram"></a>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <p>&copy; 2024 Galeria de Imagens. Todos os direitos reservados.</p>
+        <button class="back-to-top" onclick="scrollToTop()" id="backToTopBtn">Voltar ao Topo</button>
+    </div>
+</footer>
+<script>
+    const prevButton = document.querySelector('.prev');
+    const nextButton = document.querySelector('.next');
+    const carouselImages = document.querySelector('.carousel-images');
+    const indicators = document.querySelectorAll('.carousel-indicators .indicator');
+    let index = 0;
+    const totalImages = carouselImages.children.length;
+
+    function updateCarousel() {
+        // Atualiza a posição do carrossel
+        carouselImages.style.transform = `translateX(-${index * 100}%)`;
+
+        // Atualiza a opacidade das imagens para dar efeito de fade
+        const images = carouselImages.querySelectorAll('img');
+        images.forEach((image, i) => {
+            image.classList.remove('active');
+            if (i === index) {
+                image.classList.add('active');
+            }
+        });
+
+        // Atualiza os indicadores
+        indicators.forEach((indicator, i) => {
+            indicator.classList.remove('active');
+            if (i === index) {
+                indicator.classList.add('active');
+            }
+        });
+    }
+
+    // Função para mover para a próxima imagem
+    function nextImage() {
+        index = (index + 1) % totalImages;  // Vai para a próxima imagem, e volta à primeira se chegar à última
+        updateCarousel();
+    }
+
+    // Função para mover para a imagem anterior
+    function prevImage() {
+        index = (index - 1 + totalImages) % totalImages;  // Vai para a imagem anterior, e volta à última se estiver na primeira
+        updateCarousel();
+    }
+
+    // Auto Play do carrossel
+    setInterval(nextImage, 5000);  // Muda a imagem a cada 5 segundos
+
+    // Eventos de clique nas setas
+    prevButton.addEventListener('click', prevImage);
+    nextButton.addEventListener('click', nextImage);
+
+    // Eventos de clique nos indicadores
+    indicators.forEach((indicator, i) => {
+        indicator.addEventListener('click', () => {
+            index = i;
+            updateCarousel();
+        });
+    });
+    
+    // Exibir o botão quando o usuário rolar para baixo
+    window.onscroll = function() {
+        var button = document.getElementById("backToTopBtn");
+        if (document.body.scrollTop > 50 || document.documentElement.scrollTop > 50) {
+            button.style.display = "block";
+        } else {
+            button.style.display = "none";
+        }
+    };
+    function scrollToTop() {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+    
+    // Exibir o botão quando o usuário rolar para baixo
+    window.onscroll = function() {
+        var button = document.getElementById("backToTopBtn");
+        if (document.body.scrollTop > 50 || document.documentElement.scrollTop > 50) {
+            button.classList.add("show"); // Torna o botão visível
+        } else {
+            button.classList.remove("show"); // Oculta o botão
+        }
+    };
+    
+
+    // Exibir o botão quando o usuário rolar para baixo
+    window.onscroll = function() {
+        var button = document.getElementById("backToTopBtn");
+        if (document.body.scrollTop > 50 || document.documentElement.scrollTop > 50) {
+            button.classList.add("show"); // Torna o botão visível
+        } else {
+            button.classList.remove("show"); // Oculta o botão
+        }
+    };
+</script>
+
+</body>
+</html>
